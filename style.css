@@ -1,0 +1,206 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-size: cover; /* 覆盖整个页面 */
+    background-repeat: no-repeat; /* 防止背景图重复 */
+    background-attachment: fixed; /* 背景图固定，不随滚动条滚动 */
+}
+
+.top-nav {
+    display: flex;
+    justify-content: start;
+    background-color: white;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px; /* Adjust based on actual height of your nav bar */
+    z-index: 100; /* Ensures the top nav stays above other content */
+}
+
+.logo {
+    height: 50px; /* Adjust the size as needed */
+    margin-right: 20px;
+}
+.nav-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: auto 20px; /* Centers the title and adds horizontal space */
+}
+
+.nav-button {
+    margin-left: 10px;
+    padding: 10px 20px;
+}
+
+.sidebar {
+    width: 200px;
+    position: fixed;
+    left: 0;
+    top: 60px; /* Adjust to be the same as the height of the top nav */
+    bottom: 0;
+    padding: 20px;
+    overflow-y: auto; /* Adds scroll to sidebar if content is too long */
+    background-size: cover; /* This will cover the entire sidebar */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background:#ffffff;
+}
+ 
+
+
+.button-like {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px;
+    background-color: #007bff; /* Button color */
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-like:hover {
+    background-color: #0056b3; /* Color when hovered */
+}
+
+.attendance h2 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.attendance ul {
+    list-style: none;  
+    padding: 0;
+}
+
+.attendance li {
+    margin-bottom: 5px;
+}
+
+/* Adjust the main content area to avoid being hidden by the sidebar */
+main {
+    margin-left: 200px; /* Same as the width of the sidebar */
+    margin-top: 60px; /* Same as the height of the top nav */
+    padding: 20px;
+}
+/* ... [rest of your CSS] ... */
+
+.accordion-button {
+    background-color: #f0f0f0;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+/* ... [rest of your CSS] ... */
+
+.accordion-button .arrow {
+    font-size: 12px; /* Adjust as needed */
+    margin-left: 5px;
+}
+
+
+.panel {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+}
+.csv-textarea-container {
+    display:flex;
+    flex-direction: column; /* Stack textareas vertically */
+    align-items: center; /* Center textareas horizontally */
+    gap: 50px; /* Space between textareas */
+}
+
+#csvTextarea2 {
+    width: 80%; /* Adjust as needed */
+    height: 300px; /* Adjust as needed */
+    padding: 10px;
+    margin: 10px;   
+    font-family: monospace;
+    overflow: auto; /* 启用滚动条 */
+    border: 1px solid #ccc; /* 可选，为了更好的视觉效果 */
+    border-radius: 4px;
+    resize: vertical;
+}
+
+
+#csvAttendancePercentageResult {
+    width: 80%; /* Adjust as needed */
+    height: 300px; /* Adjust as needed */
+    padding: 10px;
+    margin: 10px;   
+    font-family: monospace;
+    overflow: auto; /* 启用滚动条 */
+    border: 1px solid #ccc; /* 可选，为了更好的视觉效果 */
+    border-radius: 4px;
+    resize: vertical;
+}
+#csvDisplayArea, #scoreDisplayArea, #csvAttendancePercentageDisplay,#csvhiddenDisplay{
+    width: 80%; /* Adjust as needed */
+    height: 300px; /* Adjust as needed */
+    padding: 10px;
+    margin: 10px;
+    font-family: monospace;
+    overflow: auto; /* 启用滚动条 */
+    border: 1px solid #ccc; /* 可选，为了更好的视觉效果 */
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.main-content,
+.calculate-average-score {
+    display: none;
+}
+.calculategroupattendance {
+    display: none;
+}
+.CalculateHiddenLab {
+    display: none;
+}
+
+#classListArea, #labInfoArea {
+    width: 300px; /* Adjust as needed */
+    height: 300px; /* Adjust as needed */
+    padding: 10px;
+    margin: 10px;
+    font-family: monospace;
+    overflow: auto; /* 启用滚动条 */
+    border: 1px solid #ccc; /* 可选，为了更好的视觉效果 */
+    border-radius: 4px;
+    resize: vertical;
+}
+
+#avgScoreDisplayArea
+{
+    width: 600px; /* Adjust as needed */
+    height: 300px; /* Adjust as needed */
+    padding: 10px;
+    margin: 10px;
+    font-family: monospace;
+    overflow: auto; /* 启用滚动条 */
+    border: 1px solid #ccc; /* 可选，为了更好的视觉效果 */
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.row {
+    display: flex;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    /* 可以根据需要添加更多样式 */
+}
