@@ -4,7 +4,8 @@
     <meta charset = "UTF-8">
     <meta name = "viewport" content="width=device-width, initial-scale=1.0">
     <title>Attendance Tool</title>
-    <style>
+    <style> 
+    /* CSS begin */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -211,17 +212,20 @@
             border-radius: 4px;
             /* 可以根据需要添加更多样式 */
         }
+            /* CSS end */
     </style>
 </head>
 <body>
     <header>
         <nav class="top-nav">
-            <img src=".\png\logo.png" > <!-- Update the src attribute with your logo path -->
+            <img src="https://res.cloudinary.com/ddnhkzyd5/image/upload/v1711235833/logo_iifiiz.png" alt="Logo">
+
             <div class="nav-title">Attendance Tool</div>
         </nav>
     </header>
 </head>
 <body>
+    <!-- HTML BEGIN -->
     <aside class="sidebar">
         <div class="accordion">
             <button class="accordion-button" onclick="toggleAccordion('section1')">
@@ -306,8 +310,9 @@
             <div id="csvAttendancePercentageResult">CSV Result Content Here</div>
         </div>
     </main>
-    
+        <!-- HTML end -->
     <script>
+        // JavaScript begin
         document.addEventListener('DOMContentLoaded', function() {
             // Display CSV content in csvTextarea1 upon file selection
             var fileInput = document.getElementById('csvFileInput');
@@ -933,6 +938,8 @@
                 displayMatchingElements();
             });
         });
+                // JavaScript end
     </script>
 </body>
 </html>
+
