@@ -9,19 +9,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 var content = e.target.result;
                 var lines = content.split('\n');
     
-                // 创建一个新的table元素
+                // Create a Table Element
                 var table = document.createElement('table');
                 table.setAttribute('border', '1');
     
-                // 遍历每一行
+                // Traverse every Line
                 lines.forEach(function(line) {
-                    var row = document.createElement('tr'); // 创建一个新的tr元素
-                    var fields = line.split(','); // 将每行按逗号分隔
+                    var row = document.createElement('tr'); // Create a Table Line
+                    var fields = line.split(','); 
     
-                    // 遍历每个字段
+                    // Traverse every field
                     fields.forEach(function(field) {
-                        var cell = document.createElement('td'); // 创建一个新的td元素
-                        cell.textContent = field; // 设置单元格内容
+                        var cell = document.createElement('td'); // Create a Tble Data
+                        cell.textContent = field; 
                         row.appendChild(cell); // 将单元格添加到当前行
                     });
     
@@ -47,6 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
             panel.style.display = "block";
         }
     };
+
+    displayMatchingElements();
 });
 
 function loadCSV() {
@@ -120,7 +122,7 @@ function downloadCSV() {
     
     // 检查是否存在表格
     if (!table) {
-        // 如果没有表格，使用alert提示用户
+        // 如果没有表格，使用headersInfo提示用户
         alert("No File Selected");
     } else {
         // 将表格内容转换为CSV格式
@@ -216,7 +218,7 @@ fileInput.addEventListener('change', function() {
         reader.onload = function(e) {
             var text = e.target.result;
             var classListCsvJson = csvToJson(text); // 转换CSV文本为JSON
-            console.log(classListCsvJson); // 在控制台输出解析得到的JSON
+            // console.log(classListCsvJson); // 在控制台输出解析得到的JSON
         };
 
         // 读取文件内容
@@ -226,7 +228,6 @@ fileInput.addEventListener('change', function() {
     }
 });
 
-// 将CSV文本转换为JSON格式的函数
 function csvToJson(csv) {
     var lines = csv.split("\n");
     var result = [];
@@ -237,14 +238,19 @@ function csvToJson(csv) {
         var currentline = lines[i].split(",");
 
         for (var j = 0; j < headers.length; j++) {
-            obj[headers[j].trim()] = currentline[j].trim();
+            // 检查 currentline[j] 是否存在，如果不存在则设置为空字符串
+            obj[headers[j].trim()] = currentline[j] ? currentline[j].trim() : "";
         }
 
-        result.push(obj);
+        // 如果对象不是完全由空字符串组成，则添加到结果中
+        if (Object.values(obj).some(value => value !== "")) {
+            result.push(obj);
+        }
     }
 
     return result; // 返回JSON对象数组
 }
+
 
 
 
@@ -439,3 +445,181 @@ function downloadAttendancePercentageCSV() {
     link.click(); // 触发下载
     document.body.removeChild(link); // 下载后就不需要这个元素了
 }
+
+// 定义两个数组来存储特定列的数据
+var classListFifthColumn = [];
+var labInfoSecondColumn = [];
+
+// Input Class List in left textbox
+document.getElementById('uploadClassList').addEventListener('change', function(e) {
+    var file = e.target.files[0];
+    var reader = new FileReader();
+    
+    reader.onload = function(e) {
+        var contents = e.target.result;
+        var lines = contents.split('\n');
+        var table = '<table border="1">';
+
+        classListFifthColumn = []; // 清空数组以存储新数据
+        
+        lines.forEach(function(line, index) {
+            var values = line.split(',');
+            if (values.length < 5) { // 确保每行至少有5列
+                // 如果列数不足，可以选择在这里处理，例如跳过该行或添加默认值
+                return; // 这里选择跳过该行
+            }
+
+            if (index === 0) { // 对于标题行
+                // 使用 <th> 标签并应用加粗样式
+                table += '<tr>' + values.map(function(header) {
+                    return '<th><strong>' + header.trim() + '</strong></th>';
+                }).join('') + '</tr>';
+            } else {
+                table += '<tr>';
+                
+                values.forEach(function(value, colIndex) {
+                    if (colIndex === 4) { // 第五列，index为4
+                        // 存储第五列的数据，忽略大小写并去除空格
+                        classListFifthColumn.push(value.trim().toLowerCase());
+                    }
+                    table += '<td>' + value + '</td>';
+                });
+                
+                table += '</tr>';
+            }
+        });
+        
+        table += '</table>';
+        document.getElementById('classListArea').innerHTML = table; // 将生成的表格显示在页面上
+    };
+    
+    reader.readAsText(file); // 读取文件内容
+});
+
+
+// 修改：定义一个映射，存储labInfo中每个邮箱对应的整行数据
+var labInfoRowsByEmail = {};
+// 定义一个数组来存储每一列标题的长度
+var headersInfo = [];
+
+// Input Lab Info in right textbox
+document.getElementById('uploadLabInfo').addEventListener('change', function(e) {
+    var file = e.target.files[0];
+    var reader = new FileReader();
+    
+    reader.onload = function(e) {
+        var contents = e.target.result;
+        var lines = contents.split('\n');
+        var table = '<table border="1">';
+
+        labInfoRowsByEmail = {}; // 重置映射
+        labInfoSecondColumn = []; // 清空数组以存储新数据
+        headersInfo = []; // 
+        
+        lines.forEach(function(line, index) {
+            var values = line.split(',');
+
+                if (index === 0) { // 检测标题行
+                    // 存储每一列标题的名字和长度
+                    headersInfo = values.map(value => 
+                        ({ name: value.trim(), length: value.trim().length, scoreCount : 0 })
+                    );
+                    // 对标题行应用加粗样式
+                    table += '<tr><th>' + values.map(value =>  
+                        '<strong>' + value.trim() + '</strong>'
+                    ).join('</th><th>') + '</th></tr>';
+                } else if (values.length > 1) { // 确保每行至少有两列
+                    // 存储整行数据到映射中，以第二列（邮箱）为键
+                    var email = values[1].trim().toLowerCase();
+                    labInfoRowsByEmail[email] = values;
+                    
+                    table += '<tr>';
+                    values.forEach(function(value, colIndex) {
+                        if (colIndex === 1) { // 第二列，index为1
+                            labInfoSecondColumn.push(email); // 存储第二列的数据，忽略大小写并去除空格
+                        }
+                        table += '<td>' + value + '</td>';
+                    });
+                    table += '</tr>';
+                }
+            
+        });
+        
+        table += '</table>';
+        document.getElementById('labInfoArea').innerHTML = table;
+    };
+    
+    reader.readAsText(file);
+});
+
+
+document.getElementById('calculateAvgScore').addEventListener('click', function() {
+    displayMatchingElements();
+});
+
+// 保持之前定义的 displayMatchingElements 函数不变
+function displayMatchingElements() {
+    var displayContent = '';
+    var selectedMultiplier = document.querySelector('input[name="multiplier"]:checked').value;
+    var displayContent = `<b>Colored labs accounted for ${selectedMultiplier} Times </b> <br><br>`;
+    
+    classListFifthColumn.forEach(function(email) {
+        if (labInfoSecondColumn.includes(email)) {
+            var rowData = labInfoRowsByEmail[email];
+            var totalScore = 0;  // 用于累加所有加权分数
+            var totalWeight = 0; // 用于累加所有权重
+            var qualifyingHeaderName = ''; // 用于存储符合条件的第一个标题名
+
+            rowData.slice(2).forEach((cell, index) => {
+                var cellValue = cell.trim();
+                var isNumber = cellValue !== '' && !isNaN(cellValue);
+                var header = headersInfo[index + 2]; // 加2是因为我们从第三列开始
+
+                // // Some People forget to do Basic Assignments
+                // if (header.lenght < 10 && !isNumber){
+                //     totalWeight = totalWeight + 1;
+                // }
+
+                if (isNumber) {
+                    if (header.length > 10 && qualifyingHeaderName === '') {
+                        header.scoreCount++; // 对应列的成绩数量加1
+                        var splitHeader = header.name.split('-');
+                        qualifyingHeaderName = splitHeader[splitHeader.length - 1].trim(); // 只取"-"符号右侧的内容
+                    }
+
+                    var weight = header.length < 10 ? 1 : parseFloat(selectedMultiplier); // 根据列标题长度设置权重
+                    
+                    totalScore += parseFloat(cellValue) * weight; // 累加加权分数
+                    totalWeight += weight; // 累加权重
+                }
+            });
+            
+            // // Some People forget to do Colored Assignments
+            // while(totalWeight < 4 + 2 * parseFloat(selectedMultiplier)){
+            //     totalWeight = totalWeight + parseFloat(selectedMultiplier)
+            // }            
+
+            // if (email == "lauren.mullally.2022@mumail.ie"){
+            //     alert(totalWeight);
+            //     alert(totalScore);
+            // }
+
+            // 计算加权平均值
+            var weightedAverage = totalScore / totalWeight;
+            if (weightedAverage == '0.00') {
+                displayContent += `<span style="background-color: red; color: white;">${email}: absenteeism</span><br>`;
+            } else {
+                displayContent += `${email} [${qualifyingHeaderName}]: ${weightedAverage.toFixed(2)}<br>`;
+            }
+        }
+    });
+
+    document.getElementById('avgScoreDisplayArea').innerHTML = displayContent;
+}
+
+// 添加事件监听器到单选按钮，以便在选项变化时自动更新显示内容
+document.querySelectorAll('input[name="multiplier"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+        displayMatchingElements();
+    });
+});

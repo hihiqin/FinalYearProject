@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Attendance Tool</title>
+</head>
+<body>
+    <header>
+        <nav class="top-nav">
+            <img src=".\png\logo.png" > <!-- Update the src attribute with your logo path -->
+            <div class="nav-title">Attendance Tool</div>
+        </nav>
+    </header>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="accordion">
+            <button class="accordion-button" onclick="toggleAccordion('section1')">
+                Attendance Check During the Semester <span class="arrow">►</span>
+            </button>
+            <div class="panel" id="section1">
+            </button> <p class="button-like" id="showMainContent">Students who did lab late/excute/absent</p>
+                <p class="button-like" id="showMainContent2">Percentages for 100% attendance of each group</p>
+                <p class="button-like" id="toggleScoreArea">Each student lab average result from weekly lab</p>
+                <p class="button-like"id="NotHiddenLab">Student who completed weekly lab questions but did not do hidden labs questions</p>
+
+            </div>
+        </div>
+        <div class="accordion">
+            <button class="accordion-button" onclick="toggleAccordion('section2')">
+                Attendance Check at the End of Semester <span class="arrow">►</span>
+            </button>
+            <div class="panel" id="section2">
+                <p class="button-like">Students who did lab late/excute/late</p>
+                <p class="button-like">Percentages for 100% attendance of each group</p>
+                <p class="button-like">The percentage of students who attended group labs and have recorded attendance </p>
+                <p class="button-like">The overall scores for each student, average group lab score for students</p>
+                <p class="button-like">Student who completed weekly lab questions but did not do group labs questions</p>
+            </div>            
+        </div>
+        
+    </aside>
+    
+    <main class="main-content">
+        <!-- <textarea id="csvTextarea1" rows="10" cols="50">CSV Content 1</textarea> -->
+        <div id="csvDisplayArea">CSV Content for Student Attendance</div>
+        <input type="file" id="csvFileInput" accept=".csv">
+        <button type="button" onclick="loadCSV()">Upload CSV</button>
+        <button class="button" onclick="downloadCSV()">Download the generated File</button>
+        <div id="csvTextarea2" rows="10" cols="50">CSV Content For the Attendanc Result</div>
+
+    </main>
+
+    <main class="calculate-average-score">
+        <div class="row">
+            <div class="inputArea">
+                <input type="file" accept=".csv" id = "uploadClassList"  hidden>
+                <label for="uploadClassList" class="custom-file-upload">Input ClassCSV</label>
+                <div id="classListArea">Classlist Display Area</div>
+            </div>
+            <div class="inputArea">
+                <input type="file" accept=".csv" id = "uploadLabInfo"  hidden>
+                <label for="uploadLabInfo" class="custom-file-upload">Input LabCSV</label>
+                <div id="labInfoArea">Laf Info Area</div>
+            </div>
+        </div>
+        <button id="calculateAvgScore">Calculate Average</button>
+            <label>Select the hidden Lab Rate:</label>
+            <input type="radio" id="multiplyBy1.5" name="multiplier" value="1.5" checked>
+            <label for="multiplyBy1.5">X1.5</label>        
+            <input type="radio" id="multiplyBy2" name="multiplier" value="2">
+            <label for="multiplyBy2">X2</label>
+            <input type="radio" id="multiplyBy2.5" name="multiplier" value="2.5">
+            <label for="multiplyBy2">X2.5</label>
+            <input type="radio" id="multiplyBy3" name="multiplier" value="3">
+            <label for="multiplyBy2">X3</label>
+        <!-- Div to display the breakdown -->
+        <div id="avgScoreDisplayArea">Avg Score Display</div>
+    </main>
+
+    <main class="calculategroupattendance">
+        <div id="percentagesContent">
+            <div id="csvAttendancePercentageDisplay">CSV Content for Attendance Percentage</div>
+            <input type="file" id="csvAttendancePercentageInput" accept=".csv">
+            <button type="button" onclick="uploadAttendancePercentageCSV()">Upload CSV</button>
+            <button class="button" onclick="downloadAttendancePercentageCSV()">Download the generated File</button>
+            <div id="csvAttendancePercentageResult">CSV Result Content Here</div>
+        </div>
+    </main>
+    
+    <main class="CalculateHiddenLab">
+        <div id="StudentNoHidden">
+            <div id="csvhiddenDisplay">CSV Content for week lab</div>
+            <input type="file" id="csvHiddenInput" accept=".csv">
+            <button type="button" onclick="uploadHiddenCSV()">Upload CSV</button>
+            <button class="button" onclick="downloadHiddenCSV()">Download the generated File</button>
+            <div id="csvAttendancePercentageResult">CSV Result Content Here</div>
+        </div>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>
