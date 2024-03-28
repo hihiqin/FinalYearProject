@@ -6,212 +6,232 @@
     <title>Attendance Tool</title>
     <style> 
     /* CSS begin */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-size: cover; /* 覆盖整个页面 */
-            background-repeat: no-repeat; /* 防止背景图重复 */
-            background-attachment: fixed; /* 背景图固定，不随滚动条滚动 */
-        }
+       body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-size: cover; /* 覆盖整个页面 */
+    background-repeat: no-repeat; /* 防止背景图重复 */
+    background-attachment: fixed; /* 背景图固定，不随滚动条滚动 */
+}
 
-        .top-nav {
-            display: flex;
-            justify-content: start;
-            background-color: white;
-            padding: 10px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: 60px; /* Adjust based on actual height of your nav bar */
-            z-index: 100; /* Ensures the top nav stays above other content */
-        }
+.top-nav {
+    display: flex;
+    justify-content: start;
+    background-color: white;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px; /* Adjust based on actual height of your nav bar */
+    z-index: 100; /* Ensures the top nav stays above other content */
+}
 
-        .logo {
-            height: 50px; /* Adjust the size as needed */
-            margin-right: 20px;
-        }
-        .nav-title {
-            font-size: 20px;
-            font-weight: bold;
-            margin: auto 20px; /* Centers the title and adds horizontal space */
-        }
+.logo {
+    height: 50px; /* Adjust the size as needed */
+    margin-right: 20px;
+}
+.nav-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: auto 20px; /* Centers the title and adds horizontal space */
+}
 
-        .nav-button {
-            margin-left: 10px;
-            padding: 10px 20px;
-        }
+.nav-button {
+    margin-left: 10px;
+    padding: 10px 20px;
+}
 
-        .sidebar {
-            width: 200px;
-            position: fixed;
-            left: 0;
-            top: 60px; /* Adjust to be the same as the height of the top nav */
-            bottom: 0;
-            padding: 20px;
-            overflow-y: auto; /* Adds scroll to sidebar if content is too long */
-            background-size: cover; /* This will cover the entire sidebar */
-            background-repeat: no-repeat; /* Prevents the image from repeating */
-            background:#ffffff;
-        }
-        
-
-
-        .button-like {
-            display: inline-block;
-            padding: 10px 15px;
-            margin: 5px;
-            background-color: #007bff; /* Button color */
-            color: white;
-            text-align: center;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .button-like:hover {
-            background-color: #0056b3; /* Color when hovered */
-        }
-
-        .attendance h2 {
-            font-size: 16px;
-            margin-bottom: 5px;
-        }
-
-        .attendance ul {
-            list-style: none;  
-            padding: 0;
-        }
-
-        .attendance li {
-            margin-bottom: 5px;
-        }
-
-        /* Adjust the main content area to avoid being hidden by the sidebar */
-        main {
-            margin-left: 200px; /* Same as the width of the sidebar */
-            margin-top: 60px; /* Same as the height of the top nav */
-            padding: 20px;
-        }
-        /* ... [rest of your CSS] ... */
-
-        .accordion-button {
-            background-color: #f0f0f0;
-            color: black;
-            cursor: pointer;
-            padding: 18px;
-            width: 100%;
-            border: none;
-            text-align: left;
-            outline: none;
-            font-size: 15px;
-            transition: 0.4s;
-        }
-        /* ... [rest of your CSS] ... */
-
-        .accordion-button .arrow {
-            font-size: 12px; /* Adjust as needed */
-            margin-left: 5px;
-        }
+.sidebar {
+    width: 200px;
+    position: fixed;
+    left: 0;
+    top: 60px; /* Adjust to be the same as the height of the top nav */
+    bottom: 0;
+    padding: 20px;
+    overflow-y: auto; /* Adds scroll to sidebar if content is too long */
+    background-size: cover; /* This will cover the entire sidebar */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background:#ffffff;
+}
+ 
 
 
-        .panel {
-            padding: 0 18px;
-            display: none;
-            overflow: hidden;
-        }
-        .csv-textarea-container {
-            display:flex;
-            flex-direction: column; /* Stack textareas vertically */
-            align-items: center; /* Center textareas horizontally */
-            gap: 50px; /* Space between textareas */
-        }
+.button-like {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px;
+    background-color: #007bff; /* Button color */
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
 
-        #csvTextarea2 {
-            width: 80%; /* Adjust as needed */
-            height: 300px; /* Adjust as needed */
-            padding: 10px;
-            margin: 10px;   
-            font-family: monospace;
-            overflow: auto; /* 启用滚动条 */
-            border: 1px solid #ccc; /* 可选，为了更好的视觉效果 */
-            border-radius: 4px;
-            resize: vertical;
-        }
+.button-like:hover {
+    background-color: #0056b3; /* Color when hovered */
+}
+
+.attendance h2 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.attendance ul {
+    list-style: none;  
+    padding: 0;
+}
+
+.attendance li {
+    margin-bottom: 5px;
+}
+
+/* Adjust the main content area to avoid being hidden by the sidebar */
+main {
+    margin-left: 200px; /* Same as the width of the sidebar */
+    margin-top: 60px; /* Same as the height of the top nav */
+    padding: 20px;
+}
+/* ... [rest of your CSS] ... */
+
+.accordion-button {
+    background-color: #f0f0f0;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+/* ... [rest of your CSS] ... */
+
+.accordion-button .arrow {
+    font-size: 12px; /* Adjust as needed */
+    margin-left: 5px;
+}
 
 
-        #csvAttendancePercentageResult {
-            width: 80%; /* Adjust as needed */
-            height: 300px; /* Adjust as needed */
-            padding: 10px;
-            margin: 10px;   
-            font-family: monospace;
-            overflow: auto; /* 启用滚动条 */
-            border: 1px solid #ccc; /* 可选，为了更好的视觉效果 */
-            border-radius: 4px;
-            resize: vertical;
-        }
-        #csvDisplayArea, #scoreDisplayArea, #csvAttendancePercentageDisplay,#csvhiddenDisplay{
-            width: 80%; /* Adjust as needed */
-            height: 300px; /* Adjust as needed */
-            padding: 10px;
-            margin: 10px;
-            font-family: monospace;
-            overflow: auto; /* 启用滚动条 */
-            border: 1px solid #ccc; /* 可选，为了更好的视觉效果 */
-            border-radius: 4px;
-            resize: vertical;
-        }
+.panel {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+}
+.csv-textarea-container {
+    display:flex;
+    flex-direction: column; /* Stack textareas vertically */
+    align-items: center; /* Center textareas horizontally */
+    gap: 50px; /* Space between textareas */
+}
 
-        .main-content,
-        .calculate-average-score {
-            display: none;
-        }
-        .calculategroupattendance {
-            display: none;
-        }
-        .CalculateHiddenLab {
-            display: none;
-        }
+#csvTextarea2 {
+    width: 80%; /* Adjust as needed */
+    height: 300px; /* Adjust as needed */
+    padding: 10px;
+    margin: 10px;   
+    font-family: monospace;
+    overflow: auto; 
+    border: 1px solid #ccc; 
+    border-radius: 4px;
+    resize: vertical;
+}
 
-        #classListArea, #labInfoArea {
-            width: 300px; /* Adjust as needed */
-            height: 300px; /* Adjust as needed */
-            padding: 10px;
-            margin: 10px;
-            font-family: monospace;
-            overflow: auto; /* 启用滚动条 */
-            border: 1px solid #ccc; /* 可选，为了更好的视觉效果 */
-            border-radius: 4px;
-            resize: vertical;
-        }
 
-        #avgScoreDisplayArea
-        {
-            width: 600px; /* Adjust as needed */
-            height: 300px; /* Adjust as needed */
-            padding: 10px;
-            margin: 10px;
-            font-family: monospace;
-            overflow: auto; /* 启用滚动条 */
-            border: 1px solid #ccc; /* 可选，为了更好的视觉效果 */
-            border-radius: 4px;
-            resize: vertical;
-        }
+#csvAttendancePercentageResult {
+    width: 80%; /* Adjust as needed */
+    height: 300px; /* Adjust as needed */
+    padding: 10px;
+    margin: 10px;   
+    font-family: monospace;
+    overflow: auto;
+    border: 1px solid #ccc; 
+    border-radius: 4px;
+    resize: vertical;
+}
+#csvDisplayArea, #scoreDisplayArea, #csvAttendancePercentageDisplay,#csvhiddenDisplay{
+    width: 80%; /* Adjust as needed */
+    height: 300px; /* Adjust as needed */
+    padding: 10px;
+    margin: 10px;
+    font-family: monospace;
+    overflow: auto; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
 
-        .row {
-            display: flex;
-        }
+.main-content,
+.calculate-average-score {
+    display: none;
+}
+.calculategroupattendance {
+    display: none;
+}
+.CalculateHiddenLab {
+    display: none;
+}
 
-        .custom-file-upload {
-            display: inline-block;
-            padding: 6px 12px;
-            cursor: pointer;
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            /* 可以根据需要添加更多样式 */
-        }
+#classListArea, #labInfoArea,#classListArea2,#labInfoArea2 {
+    width: 300px; 
+    height: 300px; 
+    padding: 10px;
+    margin: 10px;
+    font-family: monospace;
+    overflow: auto; 
+    border: 1px solid #ccc; 
+    border-radius: 4px;
+    resize: vertical;
+}
+
+#avgScoreDisplayArea
+{
+    width: 600px; /* Adjust as needed */
+    height: 300px; /* Adjust as needed */
+    padding: 10px;
+    margin: 10px;
+    font-family: monospace;
+    overflow: auto;
+    border: 1px solid #ccc; 
+    border-radius: 4px;
+    resize: vertical;
+}
+#csvhiddenDisplay {
+    width: 600px; /* Adjust as needed */
+    height: 300px; /* Adjust as needed */
+    padding: 10px;
+    margin: 10px;
+    font-family: monospace;
+    overflow: auto; /* scrollbar */
+    border: 1px solid #ccc; 
+    border-radius: 4px;
+    resize: vertical;
+}
+.row {
+    display: flex;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.custom-file-upload2 {
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+}
+
+
             /* CSS end */
     </style>
 </head>
@@ -226,29 +246,30 @@
 </head>
 <body>
     <!-- HTML BEGIN -->
-    <aside class="sidebar">
+<aside class="sidebar">
         <div class="accordion">
-            <button class="accordion-button" onclick="toggleAccordion('section1')">
+            <button class="accordion-button" onclick="toggleAccordion('section1')" data-section="section1">
                 Attendance Check During the Semester <span class="arrow">►</span>
             </button>
+            
             <div class="panel" id="section1">
-            </button> <p class="button-like" id="showMainContent">Students who did lab late/excute/absent</p>
+            </button> <p class="button-like" id="showMainContent">Students who did lab late/excuse/absent</p>
                 <p class="button-like" id="showMainContent2">Percentages for 100% attendance of each group</p>
                 <p class="button-like" id="toggleScoreArea">Each student lab average result from weekly lab</p>
-                <p class="button-like"id="NotHiddenLab">Student who completed weekly lab questions but did not do hidden labs questions</p>
+                <p class="button-like"id="NotHiddenLab">Student who didn't entirely complete the hidden question</p>
 
             </div>
         </div>
         <div class="accordion">
-            <button class="accordion-button" onclick="toggleAccordion('section2')">
+            <button class="accordion-button" onclick="toggleAccordion('section2')" data-section="section2">
                 Attendance Check at the End of Semester <span class="arrow">►</span>
             </button>
             <div class="panel" id="section2">
-                <p class="button-like">Students who did lab late/excute/late</p>
-                <p class="button-like">Percentages for 100% attendance of each group</p>
-                <p class="button-like">The percentage of students who attended group labs and have recorded attendance </p>
-                <p class="button-like">The overall scores for each student, average group lab score for students</p>
-                <p class="button-like">Student who completed weekly lab questions but did not do group labs questions</p>
+                <p class="button-like">Wait for further exploration......</p>
+                <p class="button-like">Wait for further exploration......</p>
+                <p class="button-like">Wait for further exploration......</p>
+                <p class="button-like">Wait for further exploration......</p>
+                <p class="button-like">Wait for further exploration......</p>
             </div>            
         </div>
         
@@ -278,7 +299,7 @@
             </div>
         </div>
         <button id="calculateAvgScore">Calculate Average</button>
-            <label>Select the hidden Lab Rate:</label>
+            <label>Select the hidden Labs Rate:</label>
             <input type="radio" id="multiplyBy1.5" name="multiplier" value="1.5" checked>
             <label for="multiplyBy1.5">X1.5</label>        
             <input type="radio" id="multiplyBy2" name="multiplier" value="2">
@@ -289,8 +310,30 @@
             <label for="multiplyBy2">X3</label>
         <!-- Div to display the breakdown -->
         <div id="avgScoreDisplayArea">Avg Score Display</div>
+        <button id="downloadaverageResult">Download the generated file</button>
+    </main>
+   
+
+    <main class="CalculateHiddenLab">
+        <div class="row">
+            <div class="inputArea2">
+                <input type="file" accept=".csv" id = "uploadClassList2"  hidden>
+                <label for="uploadClassList2" class="custom-file-upload2">Input ClassCSV</label>
+                <div id="classListArea2">Classlist Display Area</div>
+            </div>
+            <div class="inputArea2">
+                <input type="file" accept=".csv" id = "uploadLabInfo2"  hidden>
+                <label for="uploadLabInfo2" class="custom-file-upload2">Input LabCSV</label>
+                <div id="labInfoArea2">Laf Info Area</div>
+            </div>
+        </div>
+        <button id="calculateHiddenlab">Calculate hidden lab</button>
+        <button id="downloadHiddenlab">Download the generated file</button>
+        <div id="csvhiddenDisplay">Student Missed Hidden Labs Display</div>
+
     </main>
 
+    
     <main class="calculategroupattendance">
         <div id="percentagesContent">
             <div id="csvAttendancePercentageDisplay">CSV Content for Attendance Percentage</div>
@@ -300,644 +343,859 @@
             <div id="csvAttendancePercentageResult">CSV Result Content Here</div>
         </div>
     </main>
-    
-    <main class="CalculateHiddenLab">
-        <div id="StudentNoHidden">
-            <div id="csvhiddenDisplay">CSV Content for week lab</div>
-            <input type="file" id="csvHiddenInput" accept=".csv">
-            <button type="button" onclick="uploadHiddenCSV()">Upload CSV</button>
-            <button class="button" onclick="downloadHiddenCSV()">Download the generated File</button>
-            <div id="csvAttendancePercentageResult">CSV Result Content Here</div>
-        </div>
-    </main>
         <!-- HTML end -->
     <script>
         // JavaScript begin
-        document.addEventListener('DOMContentLoaded', function() {
-            // Display CSV content in csvTextarea1 upon file selection
-            var fileInput = document.getElementById('csvFileInput');
-            fileInput.addEventListener('change', function() {
-                var file = this.files[0];
-                if (file) {
-                    var reader = new FileReader();
-                    reader.onload = function(e) {
-                        var content = e.target.result;
-                        var lines = content.split('\n');
-            
-                        // Create a Table Element
-                        var table = document.createElement('table');
-                        table.setAttribute('border', '1');
-            
-                        // Traverse every Line
-                        lines.forEach(function(line) {
-                            var row = document.createElement('tr'); // Create a Table Line
-                            var fields = line.split(','); 
-            
-                            // Traverse every field
-                            fields.forEach(function(field) {
-                                var cell = document.createElement('td'); // Create a Tble Data
-                                cell.textContent = field; 
-                                row.appendChild(cell); // 将单元格添加到当前行
-                            });
-            
-                            table.appendChild(row); // 将当前行添加到table中
-                        });
-            
-                        // 获取用于显示表格的div容器
-                        var displayArea = document.getElementById('csvDisplayArea');
-                        displayArea.innerHTML = ''; // 清空容器内的内容
-                        displayArea.appendChild(table); // 将新创建的表格添加到容器中
-            
-                    };
-                    reader.readAsText(file);
-                }
-            });
-
-            // Toggle accordion panels
-            window.toggleAccordion = function(sectionId) {
-                var panel = document.getElementById(sectionId);
-                if (panel.style.display === "block") {
-                    panel.style.display = "none";
-                } else {
-                    panel.style.display = "block";
-                }
-            };
-
-            displayMatchingElements();
-        });
-
-        function loadCSV() {
-            var fileInput = document.getElementById('csvFileInput');
-            var file = fileInput.files[0];
-            if (file) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    var content = e.target.result;
-                    var lines = content.split('\n');
-                    // 创建表格并添加标题行
-                    var table = document.createElement('table');
-                    table.setAttribute('border', '1');
-                    var headerRow = document.createElement('tr');
-                    ['Name', 'Group','Email', 'Date', 'Reason'].forEach(function(header) {
-                        var th = document.createElement('th');
-                        th.textContent = header;
-                        headerRow.appendChild(th);
+       document.addEventListener('DOMContentLoaded', function() {
+    // Display CSV content in csvTextarea1 upon file selection
+    var fileInput = document.getElementById('csvFileInput');
+    fileInput.addEventListener('change', function() {
+        var file = this.files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var content = e.target.result;
+                var lines = content.split('\n');
+    
+                // Create a Table Element
+                var table = document.createElement('table');
+                table.setAttribute('border', '1');
+    
+                // Traverse every Line
+                lines.forEach(function(line) {
+                    var row = document.createElement('tr'); // Create a Table Line
+                    var fields = line.split(','); 
+    
+                    // Traverse every field
+                    fields.forEach(function(field) {
+                        var cell = document.createElement('td'); // Create a Tble Data
+                        cell.textContent = field; 
+                        row.appendChild(cell); // 将单元格添加到当前行
                     });
-                    table.appendChild(headerRow);
-
-                    // 解析第四行以获取日期数据
-                    var dateFields = lines[3].split(',');
-
-                    // 开始处理学生数据行，假设从第五行开始
-                    for (var i = 4; i < lines.length; i++) {
-                        var fields = lines[i].split(',');
-                        var reason = '';
-
-                        fields.forEach(function(field, index) {
-                            if (field.includes('L (1/2)')) {
-                                reason = 'Late';
-                            } else if (field.includes('E (1/2)')) {
-                                reason = 'Excused';
-                            } else if (field.includes('A (0/2)')) {
-                                reason = 'Absent';
-                            }
-
-                            if (reason) {
-                                // 从日期行中获取相应列的日期并提取年份部分
-                                var dateMatch = dateFields[index].match(/^(.*?20\d{2})/); // 匹配以"20"开头后跟两个数字的年份
-                                var year = dateMatch ? dateMatch[0] : ''; // 如果匹配成功，使用匹配到的年份，否则使用空字符串
-                                var tr = document.createElement('tr');
-                                var name = fields[0] + ' ' + fields[1]; // firstName + lastName
-                                var group = fields[2];
-                                var email = fields[5];
-                                [name,group, email, year, reason].forEach(function(text) {
-                                    var td = document.createElement('td');
-                                    td.textContent = text;
-                                    tr.appendChild(td);
-                                });
-                                table.appendChild(tr);
-                                // 重置原因，为下一个可能的原因做准备
-                                reason = '';
-                            }
-                        });
-                    }
-
-                    // 将表格添加到指定的<div>中
-                    var displayArea = document.getElementById('csvTextarea2');
-                    displayArea.innerHTML = ''; // 清空可能存在的旧内容
-                    displayArea.appendChild(table);
-                };
-                reader.readAsText(file);
-            }
-        }
-
-
-        function downloadCSV() {
-            var table = document.getElementById("csvTextarea2").querySelector("table");
-            
-            // 检查是否存在表格
-            if (!table) {
-                // 如果没有表格，使用headersInfo提示用户
-                alert("No File Selected");
-            } else {
-                // 将表格内容转换为CSV格式
-                var rows = table.querySelectorAll("tr");
-                var csvContent = Array.from(rows)
-                    .map(row => {
-                        var cells = row.querySelectorAll("th, td");
-                        return Array.from(cells).map(cell => `"${cell.textContent}"`).join(",");
-                    })
-                    .join("\n");
-
-                // 创建一个隐藏的a标签用于下载
-                var hiddenElement = document.createElement('a');
-                hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvContent);
-                hiddenElement.target = '_blank';
-
-                // 提供下载的文件名，使用下划线替换非法字符
-                hiddenElement.download = 'lab_late_absent_excuse.csv';
-                document.body.appendChild(hiddenElement);
-                hiddenElement.click();
-                document.body.removeChild(hiddenElement);
-            }
-        }
-
-
-
-
-        // 等待DOM完全加载
-        document.addEventListener("DOMContentLoaded", function() {
-            var mainContent = document.querySelector(".main-content");
-            var calculateAverageScoreSection = document.querySelector('.calculate-average-score');
-            var calculateGroupAttendanceSection = document.querySelector('.calculategroupattendance');
-            var NoHiddenLab =  document.querySelector('.CalculateHiddenLab');
-            document.getElementById("showMainContent").addEventListener("click", function() {  
-                calculateGroupAttendanceSection.style.display = "none"; 
-                calculateAverageScoreSection.style.display = "none"; 
-                NoHiddenLab.style.display = "none";  
-
-                if (mainContent.style.display === "none" || mainContent.style.display === "") {
-                    mainContent.style.display = "block";
-                } else {
-                    mainContent.style.display = "none";
-                }
-            });
-
-            document.getElementById('toggleScoreArea').addEventListener('click', function() {
-                mainContent.style.display = "none";   
-                calculateGroupAttendanceSection.style.display = "none";  
-                NoHiddenLab.style.display = "none";    
-
-                if (calculateAverageScoreSection.style.display === 'none' || calculateAverageScoreSection.style.display === '') {
-                    calculateAverageScoreSection.style.display = 'block';
-                } else {
-                    calculateAverageScoreSection.style.display = 'none';
-                }
-            });
-            document.getElementById('showMainContent2').addEventListener('click', function() {
-                mainContent.style.display = "none";
-                calculateAverageScoreSection.style.display = "none"; 
-                NoHiddenLab.style.display = "none"; 
-
-                if (calculateGroupAttendanceSection.style.display === 'none' || calculateGroupAttendanceSection.style.display === '') {
-                    calculateGroupAttendanceSection.style.display = 'block';
-                } else {
-                    calculateGroupAttendanceSection.style.display = 'none';
-                }
-            });
-            document.getElementById('NotHiddenLab').addEventListener('click', function() {
-                mainContent.style.display = "none";
-                calculateAverageScoreSection.style.display = "none"; 
-                calculateGroupAttendanceSection.style.display = "none";  
-
-                if (NoHiddenLab.style.display === 'none' || NoHiddenLab.style.display === '') {
-                    NoHiddenLab.style.display = 'block';
-                } else {
-                    NoHiddenLab.style.display = 'none';
-                }
-            }); 
-
-        });
-
-        // .................................................................
-        // 获取文件输入元素
-        var fileInput = document.getElementById('uploadClassList');
-
-        // 文件选择后的处理
-        fileInput.addEventListener('change', function() {
-            // 确保至少选择了一个文件
-            if (fileInput.files.length > 0) {
-                var file = fileInput.files[0]; // 获取上传的文件
-                var reader = new FileReader();
-
-                reader.onload = function(e) {
-                    var text = e.target.result;
-                    var classListCsvJson = csvToJson(text); // 转换CSV文本为JSON
-                    // console.log(classListCsvJson); // 在控制台输出解析得到的JSON
-                };
-
-                // 读取文件内容
-                reader.readAsText(file);
-            } else {
-                console.log("No file selected!");
-            }
-        });
-
-        function csvToJson(csv) {
-            var lines = csv.split("\n");
-            var result = [];
-            var headers = lines[0].split(",");
-
-            for (var i = 1; i < lines.length; i++) {
-                var obj = {};
-                var currentline = lines[i].split(",");
-
-                for (var j = 0; j < headers.length; j++) {
-                    // 检查 currentline[j] 是否存在，如果不存在则设置为空字符串
-                    obj[headers[j].trim()] = currentline[j] ? currentline[j].trim() : "";
-                }
-
-                // 如果对象不是完全由空字符串组成，则添加到结果中
-                if (Object.values(obj).some(value => value !== "")) {
-                    result.push(obj);
-                }
-            }
-
-            return result; // 返回JSON对象数组
-        }
-
-
-
-
-        document.addEventListener('DOMContentLoaded', function() {
-            var csvAttendancePercentageInput = document.getElementById('csvAttendancePercentageInput');
-            csvAttendancePercentageInput.addEventListener('change', function() {
-                var file = this.files[0];
-                if (file) {
-                    var reader = new FileReader();
-                    reader.onload = function(e) {
-                        var content = e.target.result;
-                        var lines = content.split('\n');
-
-                        // Create a new table element
-                        var table = document.createElement('table');
-                        table.setAttribute('border', '1');
-
-                        // Iterate through each line
-                        lines.forEach(function(line) {
-                            var row = document.createElement('tr'); // Create a new tr element
-                            var fields = line.split(','); // Split each line by comma
-
-                            // Iterate through each field
-                            fields.forEach(function(field) {
-                                var cell = document.createElement('td'); // Create a new td element
-                                cell.textContent = field; // Set cell content
-                                row.appendChild(cell); // Add the cell to the current row
-                            });
-
-                            table.appendChild(row); // Add the current row to the table
-                        });
-
-                        // Get the div container for displaying the table
-                        var displayArea = document.getElementById('csvAttendancePercentageDisplay');
-                        displayArea.innerHTML = ''; // Clear any existing content in the container
-                        displayArea.appendChild(table); // Add the new table to the container
-                    };
-                    reader.readAsText(file);
-                }
-            });
-        });
-
-
-        document.addEventListener('DOMContentLoaded', function() {
-            var csvHiddenInput = document.getElementById('csvHiddenInput');
-            csvHiddenInput.addEventListener('change', function() {
-                var file = this.files[0];
-                if (file) {
-                    var reader = new FileReader();
-                    reader.onload = function(e) {
-                        var content = e.target.result;
-                        var lines = content.split('\n');
-
-                        // Create a new table element
-                        var table = document.createElement('table');
-                        table.setAttribute('border', '1');
-
-                        // Iterate through each line
-                        lines.forEach(function(line) {
-                            var row = document.createElement('tr'); // Create a new tr element
-                            var fields = line.split(','); // Split each line by comma
-
-                            // Iterate through each field
-                            fields.forEach(function(field) {
-                                var cell = document.createElement('td'); // Create a new td element
-                                cell.textContent = field; // Set cell content
-                                row.appendChild(cell); // Add the cell to the current row
-                            });
-
-                            table.appendChild(row); // Add the current row to the table
-                        });
-
-                        // Get the div container for displaying the table
-                        var displayArea = document.getElementById('csvhiddenDisplay');
-                        displayArea.innerHTML = ''; // Clear any existing content in the container
-                        displayArea.appendChild(table); // Add the new table to the container
-                    };
-                    reader.readAsText(file);
-                }
-            });
-        });
-
-        document.getElementById('csvAttendancePercentageInput').addEventListener('change', function(event) {
-            const fileReader = new FileReader();
-            fileReader.onload = function(fileLoadedEvent) {
-                const text = fileLoadedEvent.target.result;
-                document.getElementById('csvAttendancePercentageDisplay').textContent = text;
-                document.getElementById('csvAttendancePercentageResult').style.display = 'none';
-                processCSVData(text);
-            };
-            fileReader.readAsText(event.target.files[0], "UTF-8");
-        });
-
-        function processCSVData(csvData) {
-            const lines = csvData.split('\n');
-            let totalEligibleStudents = 0;
-            let studentsWith100Percent = 0;
-            let totalExcludingSpecial = 0;
-            let studentsWith100PercentEx = 0;
-            const groupTotalStudents = {};
-            const groupStudentsWith100Percent = {};
-
-            lines.forEach((line) => {
-                const columns = line.split(',');
-                if (columns.length > 54) {
-                    totalEligibleStudents++;
-                    const attendancePercentageStr = columns[54].trim();
-                    const has100Percent = "100" === attendancePercentageStr;
-
-                    if (has100Percent) {
-                        studentsWith100Percent++;
-                    }
-
-                    const groups = columns[2].trim();
-                    const isExcludedGroup = groups.includes("Demonstrator") || groups.includes("CSC Tutors") || groups === "" || groups.includes("0");
-
-                    if (!isExcludedGroup) {
-                        totalExcludingSpecial++;
-                        if (has100Percent) {
-                            studentsWith100PercentEx++;
-                        }
-                    }
-
-                    const groupsArray = groups.split(',');
-                    if (groupsArray.length > 0) {
-                        const firstGroup = groupsArray[0].trim();
-                        if (["Red", "Blue", "Yellow", "Green"].includes(firstGroup)) {
-                            groupTotalStudents[firstGroup] = (groupTotalStudents[firstGroup] || 0) + 1;
-                            if (has100Percent) {
-                                groupStudentsWith100Percent[firstGroup] = (groupStudentsWith100Percent[firstGroup] || 0) + 1;
-                            }
-                        }
-                    }
-                }
-            });
-
-            // 开始构建表格HTML
-            let tableHTML = '<table border="1"><tr><th>Groups</th><th>Percentage</th></tr>';
-            
-            // 添加全体成员100%出勤率
-            tableHTML += `<tr><td>All Eligible Members and Demons with 100% Attendance</td><td>${((studentsWith100Percent / totalEligibleStudents) * 100).toFixed(2)}%</td></tr>`;
-            
-            // 添加除特定组外的成员100%出勤率
-            tableHTML += `<tr><td>All Eligible Students Excluding 'Demonstrator', 'CSC Tutors', and Blank Groups with 100% Attendance</td><td>${((studentsWith100PercentEx / totalExcludingSpecial) * 100).toFixed(2)}%</td></tr>`;
-            
-            // 为每个特定组添加行
-            ["Red", "Blue", "Yellow", "Green"].forEach(group => {
-                const totalInGroup = groupTotalStudents[group] || 0;
-                const with100InGroup = groupStudentsWith100Percent[group] || 0;
-                const percentageWith100 = ((with100InGroup / totalInGroup) * 100).toFixed(2);
-                tableHTML += `<tr><td>Eligible Students in Group ${group} with 100% Attendance</td><td>${percentageWith100}%</td></tr>`;
-            });
-            
-            // 完成表格HTML构建
-            tableHTML += '</table>';
-
-            // 设置表格HTML到结果区域
-            document.getElementById('csvAttendancePercentageResult').innerHTML = tableHTML;
-        }
-
-
-        function uploadAttendancePercentageCSV() {
-            // 假设处理函数已经被调用，所以这里不需要做什么
-            // 但如果你想在这里隐藏或显示某些UI元素，可以在这里添加代码
-            // 例如，确保结果区域是可见的
-            document.getElementById('csvAttendancePercentageResult').style.display = 'block';
-        }
-
-        function downloadAttendancePercentageCSV() {
-            // 检查是否已经选择了文件
-            const fileInput = document.getElementById('csvAttendancePercentageInput');
-            if (!fileInput.files.length) {
-                // 如果没有选择文件，则显示警告
-                alert('Please choose your file.');
-                return; // 提前返回，不执行后续代码
-            }
-
-            // 如果文件已选择，则继续执行原有的下载逻辑
-            const data = document.getElementById('csvAttendancePercentageResult').textContent;
-            if (!data) {
-                // 如果没有数据（即用户没有点击"Upload CSV"），也显示警告
-                alert('Please upload your file first.');
-                return;
-            }
-
-            const blob = new Blob([data], {type: 'text/csv'});
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.download = 'Group_attendance_percentage_result.csv';
-            link.href = url;
-            document.body.appendChild(link); // 需要添加到文档中才能正常工作
-            link.click(); // 触发下载
-            document.body.removeChild(link); // 下载后就不需要这个元素了
-        }
-
-        // 定义两个数组来存储特定列的数据
-        var classListFifthColumn = [];
-        var labInfoSecondColumn = [];
-
-        // Input Class List in left textbox
-        document.getElementById('uploadClassList').addEventListener('change', function(e) {
-            var file = e.target.files[0];
-            var reader = new FileReader();
-            
-            reader.onload = function(e) {
-                var contents = e.target.result;
-                var lines = contents.split('\n');
-                var table = '<table border="1">';
-
-                classListFifthColumn = []; // 清空数组以存储新数据
-                
-                lines.forEach(function(line, index) {
-                    var values = line.split(',');
-                    if (values.length < 5) { // 确保每行至少有5列
-                        // 如果列数不足，可以选择在这里处理，例如跳过该行或添加默认值
-                        return; // 这里选择跳过该行
-                    }
-
-                    if (index === 0) { // 对于标题行
-                        // 使用 <th> 标签并应用加粗样式
-                        table += '<tr>' + values.map(function(header) {
-                            return '<th><strong>' + header.trim() + '</strong></th>';
-                        }).join('') + '</tr>';
-                    } else {
-                        table += '<tr>';
-                        
-                        values.forEach(function(value, colIndex) {
-                            if (colIndex === 4) { // 第五列，index为4
-                                // 存储第五列的数据，忽略大小写并去除空格
-                                classListFifthColumn.push(value.trim().toLowerCase());
-                            }
-                            table += '<td>' + value + '</td>';
-                        });
-                        
-                        table += '</tr>';
-                    }
+    
+                    table.appendChild(row); // 将当前行添加到table中
                 });
-                
-                table += '</table>';
-                document.getElementById('classListArea').innerHTML = table; // 将生成的表格显示在页面上
+    
+                // 获取用于显示表格的div容器
+                var displayArea = document.getElementById('csvDisplayArea');
+                displayArea.innerHTML = ''; // 清空容器内的内容
+                displayArea.appendChild(table); // 将新创建的表格添加到容器中
+    
             };
-            
-            reader.readAsText(file); // 读取文件内容
-        });
-
-
-        // 修改：定义一个映射，存储labInfo中每个邮箱对应的整行数据
-        var labInfoRowsByEmail = {};
-        // 定义一个数组来存储每一列标题的长度
-        var headersInfo = [];
-
-        // Input Lab Info in right textbox
-        document.getElementById('uploadLabInfo').addEventListener('change', function(e) {
-            var file = e.target.files[0];
-            var reader = new FileReader();
-            
-            reader.onload = function(e) {
-                var contents = e.target.result;
-                var lines = contents.split('\n');
-                var table = '<table border="1">';
-
-                labInfoRowsByEmail = {}; // 重置映射
-                labInfoSecondColumn = []; // 清空数组以存储新数据
-                headersInfo = []; // 
-                
-                lines.forEach(function(line, index) {
-                    var values = line.split(',');
-
-                        if (index === 0) { // 检测标题行
-                            // 存储每一列标题的名字和长度
-                            headersInfo = values.map(value => 
-                                ({ name: value.trim(), length: value.trim().length, scoreCount : 0 })
-                            );
-                            // 对标题行应用加粗样式
-                            table += '<tr><th>' + values.map(value =>  
-                                '<strong>' + value.trim() + '</strong>'
-                            ).join('</th><th>') + '</th></tr>';
-                        } else if (values.length > 1) { // 确保每行至少有两列
-                            // 存储整行数据到映射中，以第二列（邮箱）为键
-                            var email = values[1].trim().toLowerCase();
-                            labInfoRowsByEmail[email] = values;
-                            
-                            table += '<tr>';
-                            values.forEach(function(value, colIndex) {
-                                if (colIndex === 1) { // 第二列，index为1
-                                    labInfoSecondColumn.push(email); // 存储第二列的数据，忽略大小写并去除空格
-                                }
-                                table += '<td>' + value + '</td>';
-                            });
-                            table += '</tr>';
-                        }
-                    
-                });
-                
-                table += '</table>';
-                document.getElementById('labInfoArea').innerHTML = table;
-            };
-            
             reader.readAsText(file);
-        });
+        }
+    });
 
+    // Toggle accordion panels
+    window.toggleAccordion = function(sectionId) {
+        var panel = document.getElementById(sectionId);
+        // Use the data-section attribute to find the specific button for this section
+        var arrow = document.querySelector(`button[data-section='${sectionId}'] .arrow`);
+    
+        // Check if the panel is already open
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+            // Change the arrow to a right-pointing triangle when the panel is closed
+            arrow.innerHTML = "►";
+        } else {
+            panel.style.display = "block";
+            // Change the arrow to a down-pointing triangle when the panel is open
+            arrow.innerHTML = "▼";
+        }
+    }
 
-        document.getElementById('calculateAvgScore').addEventListener('click', function() {
-            displayMatchingElements();
-        });
+    displayMatchingElements();
+});
 
-        // 保持之前定义的 displayMatchingElements 函数不变
-        function displayMatchingElements() {
-            var displayContent = '';
-            var selectedMultiplier = document.querySelector('input[name="multiplier"]:checked').value;
-            var displayContent = `<b>Colored labs accounted for ${selectedMultiplier} Times </b> <br><br>`;
-            
-            classListFifthColumn.forEach(function(email) {
-                if (labInfoSecondColumn.includes(email)) {
-                    var rowData = labInfoRowsByEmail[email];
-                    var totalScore = 0;  // 用于累加所有加权分数
-                    var totalWeight = 0; // 用于累加所有权重
-                    var qualifyingHeaderName = ''; // 用于存储符合条件的第一个标题名
-
-                    rowData.slice(2).forEach((cell, index) => {
-                        var cellValue = cell.trim();
-                        var isNumber = cellValue !== '' && !isNaN(cellValue);
-                        var header = headersInfo[index + 2]; // 加2是因为我们从第三列开始
-
-                        // // Some People forget to do Basic Assignments
-                        // if (header.lenght < 10 && !isNumber){
-                        //     totalWeight = totalWeight + 1;
-                        // }
-
-                        if (isNumber) {
-                            if (header.length > 10 && qualifyingHeaderName === '') {
-                                header.scoreCount++; // 对应列的成绩数量加1
-                                var splitHeader = header.name.split('-');
-                                qualifyingHeaderName = splitHeader[splitHeader.length - 1].trim(); // 只取"-"符号右侧的内容
-                            }
-
-                            var weight = header.length < 10 ? 1 : parseFloat(selectedMultiplier); // 根据列标题长度设置权重
-                            
-                            totalScore += parseFloat(cellValue) * weight; // 累加加权分数
-                            totalWeight += weight; // 累加权重
-                        }
-                    });
-                    
-                    // // Some People forget to do Colored Assignments
-                    // while(totalWeight < 4 + 2 * parseFloat(selectedMultiplier)){
-                    //     totalWeight = totalWeight + parseFloat(selectedMultiplier)
-                    // }            
-
-                    // if (email == "lauren.mullally.2022@mumail.ie"){
-                    //     alert(totalWeight);
-                    //     alert(totalScore);
-                    // }
-
-                    // 计算加权平均值
-                    var weightedAverage = totalScore / totalWeight;
-                    if (weightedAverage == '0.00') {
-                        displayContent += `<span style="background-color: red; color: white;">${email}: absenteeism</span><br>`;
-                    } else {
-                        displayContent += `${email} [${qualifyingHeaderName}]: ${weightedAverage.toFixed(2)}<br>`;
-                    }
-                }
+function loadCSV() {
+    var fileInput = document.getElementById('csvFileInput');
+    var file = fileInput.files[0];
+    if (file) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var content = e.target.result;
+            var lines = content.split('\n');
+            // 创建表格并添加标题行
+            var table = document.createElement('table');
+            table.setAttribute('border', '1');
+            var headerRow = document.createElement('tr');
+            ['Name', 'Group','Email', 'Date', 'Reason'].forEach(function(header) {
+                var th = document.createElement('th');
+                th.textContent = header;
+                headerRow.appendChild(th);
             });
+            table.appendChild(headerRow);
 
-            document.getElementById('avgScoreDisplayArea').innerHTML = displayContent;
+            // 解析第四行以获取日期数据
+            var dateFields = lines[3].split(',');
+
+            // 开始处理学生数据行，假设从第五行开始
+            for (var i = 4; i < lines.length; i++) {
+                var fields = lines[i].split(',');
+                var reason = '';
+
+                fields.forEach(function(field, index) {
+                    if (field.includes('L (1/2)')) {
+                        reason = 'Late';
+                    } else if (field.includes('E (1/2)')) {
+                        reason = 'Excused';
+                    } else if (field.includes('A (0/2)')) {
+                        reason = 'Absent';
+                    }
+
+                    if (reason) {
+                        // 从日期行中获取相应列的日期并提取年份部分
+                        var dateMatch = dateFields[index].match(/^(.*?20\d{2})/); // 匹配以"20"开头后跟两个数字的年份
+                        var year = dateMatch ? dateMatch[0] : ''; // 如果匹配成功，使用匹配到的年份，否则使用空字符串
+                        var tr = document.createElement('tr');
+                        var name = fields[0] + ' ' + fields[1]; // firstName + lastName
+                        var group = fields[2];
+                        var email = fields[5];
+                        [name,group, email, year, reason].forEach(function(text) {
+                            var td = document.createElement('td');
+                            td.textContent = text;
+                            tr.appendChild(td);
+                        });
+                        table.appendChild(tr);
+                        // 重置原因，为下一个可能的原因做准备
+                        reason = '';
+                    }
+                });
+            }
+
+            // 将表格添加到指定的<div>中
+            var displayArea = document.getElementById('csvTextarea2');
+            displayArea.innerHTML = ''; // 清空可能存在的旧内容
+            displayArea.appendChild(table);
+        };
+        reader.readAsText(file);
+    }
+}
+
+
+function downloadCSV() {
+    var table = document.getElementById("csvTextarea2").querySelector("table");
+    
+    // 检查是否存在表格
+    if (!table) {
+        // 如果没有表格，使用headersInfo提示用户
+        alert("Please choose your file.");
+    } else {
+        // 将表格内容转换为CSV格式
+        var rows = table.querySelectorAll("tr");
+        var csvContent = Array.from(rows)
+            .map(row => {
+                var cells = row.querySelectorAll("th, td");
+                return Array.from(cells).map(cell => `"${cell.textContent}"`).join(",");
+            })
+            .join("\n");
+
+        // 创建一个隐藏的a标签用于下载
+        var hiddenElement = document.createElement('a');
+        hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvContent);
+        hiddenElement.target = '_blank';
+
+        // 提供下载的文件名，使用下划线替换非法字符
+        hiddenElement.download = 'lab_late_absent_excuse.csv';
+        document.body.appendChild(hiddenElement);
+        hiddenElement.click();
+        document.body.removeChild(hiddenElement);
+    }
+}
+
+
+
+
+// 等待DOM完全加载
+document.addEventListener("DOMContentLoaded", function() {
+    var mainContent = document.querySelector(".main-content");
+    var calculateAverageScoreSection = document.querySelector('.calculate-average-score');
+    var calculateGroupAttendanceSection = document.querySelector('.calculategroupattendance');
+    var NoHiddenLab =  document.querySelector('.CalculateHiddenLab');
+    document.getElementById("showMainContent").addEventListener("click", function() {  
+        calculateGroupAttendanceSection.style.display = "none"; 
+        calculateAverageScoreSection.style.display = "none"; 
+        NoHiddenLab.style.display = "none";  
+
+        if (mainContent.style.display === "none" || mainContent.style.display === "") {
+            mainContent.style.display = "block";
+        } else {
+            mainContent.style.display = "none";
+        }
+    });
+
+    document.getElementById('toggleScoreArea').addEventListener('click', function() {
+        mainContent.style.display = "none";   
+        calculateGroupAttendanceSection.style.display = "none";  
+        NoHiddenLab.style.display = "none";    
+
+        if (calculateAverageScoreSection.style.display === 'none' || calculateAverageScoreSection.style.display === '') {
+            calculateAverageScoreSection.style.display = 'block';
+        } else {
+            calculateAverageScoreSection.style.display = 'none';
+        }
+    });
+    document.getElementById('showMainContent2').addEventListener('click', function() {
+        mainContent.style.display = "none";
+        calculateAverageScoreSection.style.display = "none"; 
+        NoHiddenLab.style.display = "none"; 
+
+        if (calculateGroupAttendanceSection.style.display === 'none' || calculateGroupAttendanceSection.style.display === '') {
+            calculateGroupAttendanceSection.style.display = 'block';
+        } else {
+            calculateGroupAttendanceSection.style.display = 'none';
+        }
+    });
+    document.getElementById('NotHiddenLab').addEventListener('click', function() {
+        mainContent.style.display = "none";
+        calculateAverageScoreSection.style.display = "none"; 
+        calculateGroupAttendanceSection.style.display = "none";  
+
+        if (NoHiddenLab.style.display === 'none' || NoHiddenLab.style.display === '') {
+            NoHiddenLab.style.display = 'block';
+        } else {
+            NoHiddenLab.style.display = 'none';
+        }
+    }); 
+
+});
+
+// .................................................................
+
+var fileInput = document.getElementById('uploadClassList');
+var fileInput = document.getElementById('uploadClassList2');
+
+// 文件选择后的处理
+fileInput.addEventListener('change', function() {
+    // 确保至少选择了一个文件
+    if (fileInput.files.length > 0) {
+        var file = fileInput.files[0]; // 获取上传的文件
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            var text = e.target.result;
+            var classListCsvJson = csvToJson(text); // 转换CSV文本为JSON
+            // console.log(classListCsvJson); // 在控制台输出解析得到的JSON
+        };
+
+        // 读取文件内容
+        reader.readAsText(file);
+    } else {
+        console.log("No file selected!");
+    }
+});
+
+function csvToJson(csv) {
+    var lines = csv.split("\n");
+    var result = [];
+    var headers = lines[0].split(",");
+
+    for (var i = 1; i < lines.length; i++) {
+        var obj = {};
+        var currentline = lines[i].split(",");
+
+        for (var j = 0; j < headers.length; j++) {
+            // 检查 currentline[j] 是否存在，如果不存在则设置为空字符串
+            obj[headers[j].trim()] = currentline[j] ? currentline[j].trim() : "";
         }
 
-        // 添加事件监听器到单选按钮，以便在选项变化时自动更新显示内容
-        document.querySelectorAll('input[name="multiplier"]').forEach(radio => {
-            radio.addEventListener('change', () => {
-                displayMatchingElements();
+        // 如果对象不是完全由空字符串组成，则添加到结果中
+        if (Object.values(obj).some(value => value !== "")) {
+            result.push(obj);
+        }
+    }
+
+    return result; // 返回JSON对象数组
+}
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    var csvAttendancePercentageInput = document.getElementById('csvAttendancePercentageInput');
+    csvAttendancePercentageInput.addEventListener('change', function() {
+        var file = this.files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var content = e.target.result;
+                var lines = content.split('\n');
+
+                // Create a new table element
+                var table = document.createElement('table');
+                table.setAttribute('border', '1');
+
+                // Iterate through each line
+                lines.forEach(function(line) {
+                    var row = document.createElement('tr'); // Create a new tr element
+                    var fields = line.split(','); // Split each line by comma
+
+                    // Iterate through each field
+                    fields.forEach(function(field) {
+                        var cell = document.createElement('td'); // Create a new td element
+                        cell.textContent = field; // Set cell content
+                        row.appendChild(cell); // Add the cell to the current row
+                    });
+
+                    table.appendChild(row); // Add the current row to the table
+                });
+
+                // Get the div container for displaying the table
+                var displayArea = document.getElementById('csvAttendancePercentageDisplay');
+                displayArea.innerHTML = ''; // Clear any existing content in the container
+                displayArea.appendChild(table); // Add the new table to the container
+            };
+            reader.readAsText(file);
+        }
+    });
+});
+
+
+
+document.getElementById('csvAttendancePercentageInput').addEventListener('change', function(event) {
+    const fileReader = new FileReader();
+    fileReader.onload = function(fileLoadedEvent) {
+        const text = fileLoadedEvent.target.result;
+        document.getElementById('csvAttendancePercentageDisplay').textContent = text;
+        document.getElementById('csvAttendancePercentageResult').style.display = 'none';
+        processCSVData(text);
+    };
+    fileReader.readAsText(event.target.files[0], "UTF-8");
+});
+
+function processCSVData(csvData) {
+    const lines = csvData.split('\n');
+    let totalEligibleStudents = 0;
+    let studentsWith100Percent = 0;
+    let totalExcludingSpecial = 0;
+    let studentsWith100PercentEx = 0;
+    const groupTotalStudents = {};
+    const groupStudentsWith100Percent = {};
+
+    lines.forEach((line) => {
+        const columns = line.split(',');
+        if (columns.length > 54) {
+            totalEligibleStudents++;
+            const attendancePercentageStr = columns[54].trim();
+            const has100Percent = "100" === attendancePercentageStr;
+
+            if (has100Percent) {
+                studentsWith100Percent++;
+            }
+
+            const groups = columns[2].trim();
+            const isExcludedGroup = groups.includes("Demonstrator") || groups.includes("CSC Tutors") || groups === "" || groups.includes("0");
+
+            if (!isExcludedGroup) {
+                totalExcludingSpecial++;
+                if (has100Percent) {
+                    studentsWith100PercentEx++;
+                }
+            }
+
+            const groupsArray = groups.split(',');
+            if (groupsArray.length > 0) {
+                const firstGroup = groupsArray[0].trim();
+                if (["Red", "Blue", "Yellow", "Green"].includes(firstGroup)) {
+                    groupTotalStudents[firstGroup] = (groupTotalStudents[firstGroup] || 0) + 1;
+                    if (has100Percent) {
+                        groupStudentsWith100Percent[firstGroup] = (groupStudentsWith100Percent[firstGroup] || 0) + 1;
+                    }
+                }
+            }
+        }
+    });
+
+    // 开始构建表格HTML
+    let tableHTML = '<table border="1"><tr><th>Groups</th><th>Percentage</th></tr>';
+    
+    // 添加全体成员100%出勤率
+    tableHTML += `<tr><td>All Eligible Members and Demons with 100% Attendance</td><td>${((studentsWith100Percent / totalEligibleStudents) * 100).toFixed(2)}%</td></tr>`;
+    
+    // 添加除特定组外的成员100%出勤率
+    tableHTML += `<tr><td>All Eligible Students Excluding 'Demonstrator', 'CSC Tutors', and Blank Groups with 100% Attendance</td><td>${((studentsWith100PercentEx / totalExcludingSpecial) * 100).toFixed(2)}%</td></tr>`;
+    
+    // 为每个特定组添加行
+    ["Red", "Blue", "Yellow", "Green"].forEach(group => {
+        const totalInGroup = groupTotalStudents[group] || 0;
+        const with100InGroup = groupStudentsWith100Percent[group] || 0;
+        const percentageWith100 = ((with100InGroup / totalInGroup) * 100).toFixed(2);
+        tableHTML += `<tr><td>Eligible Students in Group ${group} with 100% Attendance</td><td>${percentageWith100}%</td></tr>`;
+    });
+    
+    // 完成表格HTML构建
+    tableHTML += '</table>';
+
+    // 设置表格HTML到结果区域
+    document.getElementById('csvAttendancePercentageResult').innerHTML = tableHTML;
+}
+
+
+function uploadAttendancePercentageCSV() {
+    // 假设处理函数已经被调用，所以这里不需要做什么
+    // 例如，确保结果区域是可见的
+    document.getElementById('csvAttendancePercentageResult').style.display = 'block';
+}
+
+function downloadAttendancePercentageCSV() {
+    // 检查是否已经选择了文件
+    const fileInput = document.getElementById('csvAttendancePercentageInput');
+    if (!fileInput.files.length) {
+        // 如果没有选择文件，则显示警告
+        alert('Please choose your file.');
+        return; // 提前返回，不执行后续代码
+    }
+
+    // 如果文件已选择，则继续执行原有的下载逻辑
+    const data = document.getElementById('csvAttendancePercentageResult').textContent;
+    if (!data) {
+        // 如果没有数据（即用户没有点击"Upload CSV"），也显示警告
+        alert('Please upload your file first.');
+        return;
+    }
+
+    const blob = new Blob([data], {type: 'text/csv'});
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.download = 'Group_attendance_percentage_result.csv';
+    link.href = url;
+    document.body.appendChild(link); // 需要添加到文档中才能正常工作
+    link.click(); // 触发下载
+    document.body.removeChild(link); // 下载后就不需要这个元素了
+}
+
+
+//***************************************************************************************************************************** */
+
+// 定义两个数组来存储特定列的数据
+var classListFifthColumn = [];
+var labInfoSecondColumn = [];
+
+// Input Class List in left textbox
+document.getElementById('uploadClassList').addEventListener('change', function(e) {
+    var file = e.target.files[0];
+    var reader = new FileReader();
+    
+    reader.onload = function(e) {
+        var contents = e.target.result;
+        var lines = contents.split('\n');
+        var table = '<table border="1">';
+
+        classListFifthColumn = []; // 清空数组以存储新数据
+        
+        lines.forEach(function(line, index) {
+            var values = line.split(',');
+            if (values.length < 5) { // 确保每行至少有5列
+                // 如果列数不足，可以选择在这里处理，例如跳过该行或添加默认值
+                return; // 这里选择跳过该行
+            }
+
+            if (index === 0) { // 对于标题行
+                // 使用 <th> 标签并应用加粗样式
+                table += '<tr>' + values.map(function(header) {
+                    return '<th><strong>' + header.trim() + '</strong></th>';
+                }).join('') + '</tr>';
+            } else {
+                table += '<tr>';
+                
+                values.forEach(function(value, colIndex) {
+                    if (colIndex === 4) { // 第五列，index为4
+                        // 存储第五列的数据，忽略大小写并去除空格
+                        classListFifthColumn.push(value.trim().toLowerCase());
+                    }
+                    table += '<td>' + value + '</td>';
+                });
+                
+                table += '</tr>';
+            }
+        });
+        
+        table += '</table>';
+        document.getElementById('classListArea').innerHTML = table; // 将生成的表格显示在页面上
+    };
+    
+    reader.readAsText(file); // 读取文件内容
+});
+
+
+// 修改：定义一个映射，存储labInfo中每个邮箱对应的整行数据
+var labInfoRowsByEmail = {};
+// 定义一个数组来存储每一列标题的长度
+var headersInfo = [];
+
+// Input Lab Info in right textbox
+document.getElementById('uploadLabInfo').addEventListener('change', function(e) {
+    var file = e.target.files[0];
+    var reader = new FileReader();
+    
+    reader.onload = function(e) {
+        var contents = e.target.result;
+        var lines = contents.split('\n');
+        var table = '<table border="1">';
+
+        labInfoRowsByEmail = {}; // 重置映射
+        labInfoSecondColumn = []; // 清空数组以存储新数据
+        headersInfo = []; // 
+        
+        lines.forEach(function(line, index) {
+            var values = line.split(',');
+
+                if (index === 0) { // 检测标题行
+                    // 存储每一列标题的名字和长度
+                    headersInfo = values.map(value => 
+                        ({ name: value.trim(), length: value.trim().length, scoreCount : 0 })
+                    );
+                    // 对标题行应用加粗样式
+                    table += '<tr><th>' + values.map(value =>  
+                        '<strong>' + value.trim() + '</strong>'
+                    ).join('</th><th>') + '</th></tr>';
+                } else if (values.length > 1) { // 确保每行至少有两列
+                    // 存储整行数据到映射中，以第二列（邮箱）为键
+                    var email = values[1].trim().toLowerCase();
+                    labInfoRowsByEmail[email] = values;
+                    
+                    table += '<tr>';
+                    values.forEach(function(value, colIndex) {
+                        if (colIndex === 1) { // 第二列，index为1
+                            labInfoSecondColumn.push(email); // 存储第二列的数据，忽略大小写并去除空格
+                        }
+                        table += '<td>' + value + '</td>';
+                    });
+                    table += '</tr>';
+                }
+            
+        });
+        
+        table += '</table>';
+        document.getElementById('labInfoArea').innerHTML = table;
+    };
+    
+    reader.readAsText(file);
+});
+
+
+document.getElementById('calculateAvgScore').addEventListener('click', function() {
+    displayMatchingElements();
+});
+
+// 保持之前定义的 displayMatchingElements 函数不变
+function displayMatchingElements() {
+    var displayContent = '';
+    var selectedMultiplier = document.querySelector('input[name="multiplier"]:checked').value;
+    var displayContent = `<b>Colored labs accounted for ${selectedMultiplier} Times </b> <br><br>`;
+    
+    classListFifthColumn.forEach(function(email) {
+        if (labInfoSecondColumn.includes(email)) {
+            var rowData = labInfoRowsByEmail[email];
+            var totalScore = 0;  // 用于累加所有加权分数
+            var totalWeight = 0; // 用于累加所有权重
+            var qualifyingHeaderName = ''; // 用于存储符合条件的第一个标题名
+
+            rowData.slice(2).forEach((cell, index) => {
+                var cellValue = cell.trim();
+                var isNumber = cellValue !== '' && !isNaN(cellValue);
+                var header = headersInfo[index + 2]; // 加2是因为我们从第三列开始
+
+                // // Some People forget to do Basic Assignments
+                // if (header.lenght < 10 && !isNumber){
+                //     totalWeight = totalWeight + 1;
+                // }
+
+                if (isNumber) {
+                    if (header.length > 10 && qualifyingHeaderName === '') {
+                        header.scoreCount++; // 对应列的成绩数量加1
+                        var splitHeader = header.name.split('-');
+                        qualifyingHeaderName = splitHeader[splitHeader.length - 1].trim(); // 只取"-"符号右侧的内容
+                    }
+
+                    var weight = header.length < 10 ? 1 : parseFloat(selectedMultiplier); // 根据列标题长度设置权重
+                    
+                    totalScore += parseFloat(cellValue) * weight; // 累加加权分数
+                    totalWeight += weight; // 累加权重
+                }
+            });
+            
+            // // Some People forget to do Colored Assignments
+            // while(totalWeight < 4 + 2 * parseFloat(selectedMultiplier)){
+            //     totalWeight = totalWeight + parseFloat(selectedMultiplier)
+            // }            
+
+            // if (email == "lauren.mullally.2022@mumail.ie"){
+            //     alert(totalWeight);
+            //     alert(totalScore);
+            // }
+
+            // 计算加权平均值
+            var weightedAverage = totalScore / totalWeight;
+            if (weightedAverage == '0.00') {
+                displayContent += `<span style="background-color: red; color: white;">${email}: absenteeism</span><br>`;
+            } else {
+                displayContent += `${email} [${qualifyingHeaderName}]: ${weightedAverage.toFixed(2)}<br>`;
+            }
+        }
+    });
+
+    document.getElementById('avgScoreDisplayArea').innerHTML = displayContent;
+}
+
+// 添加事件监听器到单选按钮，以便在选项变化时自动更新显示内容
+document.querySelectorAll('input[name="multiplier"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+        displayMatchingElements();
+    });
+});
+document.getElementById('downloadaverageResult').addEventListener('click', function() {
+    var text = document.getElementById('avgScoreDisplayArea').innerText;
+
+    // Assuming the default state is empty. If there's a default message, include it in this condition.
+    if (!text.trim() || text === "Default message here") {
+        alert("Please choose your file.");
+        return; // Prevents the rest of the script from running
+    }
+
+    // The rest of your code for processing the download follows here...
+    var csvContent = "data:text/csv;charset=utf-8," + text.split("\n").map(e => e.replace(/,/g, ';')).join("\n");
+    var encodedUri = encodeURI(csvContent);
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "average_scores.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+});
+
+
+
+
+
+
+
+//***************************************************************************************************************************** */
+
+let classEmails = []; // Store emails from the Classlist
+let labData = []; // Store rows from LabCSV for comparison
+function readClasslistCsv(inputId) {
+    document.getElementById(inputId).addEventListener('change', function() {
+        var file = this.files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                classEmails = []; // Reset for each new file
+                var content = e.target.result;
+                var lines = content.split('\n');
+                lines.slice(1).forEach(line => {
+                    var columns = line.split(',');
+                    if (columns.length >= 5) {
+                        var email = columns[4].trim().toLowerCase();
+                        if (email) {
+                            classEmails.push(email);
+                        }
+                    }
+                });
+            };
+            reader.readAsText(file);
+        }
+    });
+}
+let labHeader = ""; // Variable to store the header of the LabCSV
+
+function readLabCsv(inputId) {
+    document.getElementById(inputId).addEventListener('change', function() {
+        var file = this.files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                labData = []; // Reset for each new file
+                labHeader = ""; // Reset the header for the new file
+                var content = e.target.result;
+                var lines = content.split('\n');
+
+                // Check if there's at least one line for the header
+                if (lines.length > 0) {
+                    labHeader = lines[0]; // Store the first line as the header
+                    lines.slice(1).forEach(line => {
+                        var columns = line.split(',');
+                        if (columns.length >= 2) {
+                            var username = columns[1].trim().toLowerCase();
+                            labData.push({username: username, rowData: line});
+                        }
+                    });
+                }
+            };
+            reader.readAsText(file);
+        }
+    });
+}
+
+function calculateAndDisplayHiddenLab() {
+    // Filter to find matching lab data based on class emails
+    let matchingLabData = labData.filter(row => classEmails.includes(row.username));
+
+    // Further filter to identify students missing special question completions
+    let missingSpecials = matchingLabData.filter(row => {
+        const answers = row.rowData.split(',');
+        const colorCompletion = {}; // Tracks completion count for each color
+
+        // Iterate through answers to find and count completed special questions by color
+        answers.forEach((answer, index) => {
+            const match = labHeader.split(',')[index].match(/(\d+_l\d+q\d+)-(\w+)/);
+            if (match) {
+                const color = match[2];
+                colorCompletion[color] = colorCompletion[color] || 0;
+                // Assuming a non-empty answer indicates completion
+                if (answer.trim() !== '') {
+                    colorCompletion[color]++;
+                }
+            }
+        });
+
+        // Check if any color has 2 or more completions for each student
+        return !Object.values(colorCompletion).some(count => count >= 2);
+    });
+
+    // Display Logic for missing specials
+    var displayArea = document.getElementById('csvhiddenDisplay');
+    displayArea.innerHTML = ''; // Clear previous contents
+
+    var table = document.createElement('table');
+    table.setAttribute('border', '1');
+
+    // Create header row from stored `labHeader`
+    var headers = labHeader.split(',');
+    var thead = table.createTHead();
+    var headerRow = thead.insertRow();
+    headers.forEach(header => {
+        var th = document.createElement('th');
+        th.textContent = header.trim();
+        headerRow.appendChild(th);
+    });
+
+    // Check and append data rows for students missing special questions
+    var tbody = table.createTBody();
+    if (missingSpecials.length > 0) {
+        missingSpecials.forEach(item => {
+            var tr = tbody.insertRow();
+            item.rowData.split(',').forEach(cellData => {
+                var td = tr.insertCell();
+                td.textContent = cellData.trim();
             });
         });
+    } else {
+        // Display a message if no students are missing special questions
+        var tr = tbody.insertRow();
+        var td = tr.insertCell();
+        td.setAttribute('colspan', headers.length);
+        td.textContent = "All students have completed the required special questions.";
+        td.style.textAlign = 'center';
+    }
+
+    displayArea.appendChild(table);
+}
+
+
+
+document.getElementById('calculateHiddenlab').addEventListener('click', calculateAndDisplayHiddenLab);
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    readClasslistCsv('uploadClassList2');
+    readLabCsv('uploadLabInfo2');
+    // The 'calculateAndDisplayHiddenLab' function is already bound to the button click event
+});
+
+// This example assumes 'classEmails' and 'labData' are already populated with the necessary data from your CSV files.
+// You'll need to implement or adjust the CSV file reading and parsing logic to populate these variables accordingly.
+
+// This is a simplified demonstration. You'll need to integrate CSV file reading and data extraction
+// to fill 'classEmails' and 'labUsernames' with actual data from your uploaded CSV files.
+
+
+function setupCSVTableDisplay(inputId, displayAreaId) {
+    document.getElementById(inputId).addEventListener('change', function() {
+        var file = this.files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var content = e.target.result;
+                var lines = content.split('\n');
+
+                // Create a Table Element with a border attribute for framing
+                var table = document.createElement('table');
+                table.setAttribute('border', '1');
+
+                // Traverse every Line
+                lines.forEach(function(line, index) {
+                    var row = document.createElement('tr'); // Create a Table Row
+                    var fields = line.split(',');
+
+                    // Traverse every field
+                    fields.forEach(function(field) {
+                        var cell;
+                        // Use 'th' for the header row, 'td' for other rows
+                        if (index === 0) {
+                            cell = document.createElement('th');
+                        } else {
+                            cell = document.createElement('td');
+                        }
+                        cell.textContent = field.trim();
+                        row.appendChild(cell); // Add the cell to the current row
+                    });
+
+                    table.appendChild(row); // Add the current row to the table
+                });
+
+                // Get the container for displaying the table
+                var displayArea = document.getElementById(displayAreaId);
+                displayArea.innerHTML = ''; // Clear the container's content
+                displayArea.appendChild(table); // Add the newly created table to the container
+            };
+            reader.readAsText(file);
+        }
+    });
+}
+
+// Initialize the file upload handlers upon document content fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    setupCSVTableDisplay('uploadClassList2', 'classListArea2');
+    setupCSVTableDisplay('uploadLabInfo2', 'labInfoArea2');
+});
+
+
+
+// Add this function to your existing code
+function downloadResultsAsCSV() {
+    let csvContent = "data:text/csv;charset=utf-8,";
+
+    // Assuming you're converting directly from the displayed table
+    const table = document.querySelector('#csvhiddenDisplay table');
+    if (table) {
+        // Iterate over rows
+        Array.from(table.rows).forEach(row => {
+            const rowData = Array.from(row.cells)
+                .map(cell => `"${cell.textContent}"`) // Wrap each cell text in double quotes
+                .join(','); // Join each cell to form a row
+            csvContent += rowData + "\r\n"; // Add a newline at the end of each row
+        });
+
+        // Encode the CSV content
+        const encodedUri = encodeURI(csvContent);
+
+        // Create a temporary link to trigger the download
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "Missing_hidden_lab.csv"); // Name the file here
+        document.body.appendChild(link); // Required for Firefox
+
+        link.click(); // Trigger the download
+        document.body.removeChild(link); // Clean up
+    } else {
+        alert("Please choose you file.");
+    }
+}
+
+// Bind the download function to the button's click event
+document.getElementById('downloadHiddenlab').addEventListener('click', downloadResultsAsCSV);
+
                 // JavaScript end
     </script>
 </body>
