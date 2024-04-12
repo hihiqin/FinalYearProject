@@ -745,32 +745,46 @@ function uploadAttendancePercentageCSV() {
     document.getElementById('csvAttendancePercentageResult').style.display = 'block';
 }
 
+function tableToCSV(table) {
+    const rows = Array.from(table.querySelectorAll('tr'));
+    const csvContent = rows.map(row => {
+        const cells = Array.from(row.querySelectorAll('th, td'));
+        return cells.map(cell => `"${cell.innerText.replace(/"/g, '""')}"`).join(',');
+    }).join('\n');
+    return csvContent;
+}
+
 function downloadAttendancePercentageCSV() {
     // Check if the file has been selected
     const fileInput = document.getElementById('csvAttendancePercentageInput');
     if (!fileInput.files.length) {
-        // Show alert if no file is selected
         alert('Please choose your file.');
-        return; // Return early without executing subsequent code
+        return;
     }
 
-    //If the file has been selected, continue to execute the original download logic
-    const data = document.getElementById('csvAttendancePercentageResult').textContent;
-    if (!data) {
-        // Also displays an alert if there is no data (i.e. the user did not click "Upload CSV")
+    // Check for existing data in the table
+    const table = document.getElementById('csvAttendancePercentageResult').querySelector('table');
+    if (!table) {
         alert('Please upload your file first.');
         return;
     }
 
-    const blob = new Blob([data], {type: 'text/csv'});
+    // Convert the table to CSV format
+    const csvData = tableToCSV(table);
+
+    // Proceed with creating a Blob and downloading the file
+    const blob = new Blob([csvData], {type: 'text/csv'});
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.download = 'Group_Attendance_Percentage_Result.csv';
     link.href = url;
-    document.body.appendChild(link); 
-    link.click(); 
-    document.body.removeChild(link); 
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 }
+
+
+
 
 
 
